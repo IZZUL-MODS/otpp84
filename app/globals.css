@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
+    --border: 0 0% 85%;
+    --primary: 330 80% 65%;
+    --primary-dark: 330 70% 55%;
+    --primary-light: 330 85% 75%;
+    --danger: 0 84% 60%;
+    --success: 142 76% 36%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --border: 0 0% 20%;
+    --primary: 330 80% 65%;
+    --primary-dark: 330 70% 55%;
+    --primary-light: 330 85% 75%;
+    --danger: 0 84% 60%;
+    --success: 142 76% 45%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, 
+    hsl(var(--background)) 0%,
+    hsl(330, 80%, 95%) 100%
+  );
+  color: hsl(var(--foreground));
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+.dark body {
+  background: linear-gradient(135deg, 
+    hsl(var(--background)) 0%,
+    hsl(330, 30%, 10%) 100%
+  );
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradientFlow 3s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Input styles */
+.input-pink {
+  background: rgba(244, 114, 182, 0.05);
+  border: 1px solid rgba(244, 114, 182, 0.2);
+  transition: all 0.3s ease;
+}
+
+.input-pink:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+/* Button styles */
+.btn-pink {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+  background-size: 200% 200%;
+  transition: all 0.3s ease;
+}
+
+.btn-pink:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.4);
+  background-position: 100% 50%;
+}
+
+.btn-pink:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  background-size: 200% 200%;
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.4);
+  background-position: 100% 50%;
+}
+
+/* Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes pulse-red {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 1.5s infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(236, 72, 153, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ec4899;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #db2777;
+}
